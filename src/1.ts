@@ -5,9 +5,9 @@
 */
 
 class Student {
-  public name: string;
-  public age: number;
-  public grade: string;
+  name: string;
+  age: number;
+  grade: string;
 
   constructor(name: string, age: number, grade: string) {
     this.name = name;
@@ -16,4 +16,5 @@ class Student {
   }
 }
 
-export {};
+export { };
+

@@ -8,11 +8,29 @@
 */
 
 // реалізація класу Wizard
+
+interface ICharacter {
+  name: string;
+  level: number;
+  introduce(phrase: string): void;
+  levelUp(): void;
+}
+
+interface ISpellCaster {
+  castSpell(): void;
+}
+
 class Wizard implements ICharacter, ISpellCaster {
-  constructor(public name: string, public level: number) {
-    if (this.level < 1) {
+  name: string;
+  level: number;
+
+  constructor(name: string, level: number) {
+    if (level < 1) {
       throw new Error('Level too low');
     }
+
+    this.name = name;
+    this.level = level;
   }
 
   introduce(phrase: string): void {
@@ -24,16 +42,15 @@ class Wizard implements ICharacter, ISpellCaster {
   }
 
   levelUp(): void {
-    this.level++;
-    console.log(`Level up! New level is ${this.level}`);
+    this.level = this.level + 1;
+    console.log('Level up! New level is ' + this.level);
   }
 }
 
-// тестування класу
 const wizard = new Wizard('Merlin', 15);
 
 wizard.introduce('I am the mighty wizard');
 wizard.castSpell();
-wizard.levelUp();  // Level up! New level is 16
+wizard.levelUp();
 
-export {};
+export { };
